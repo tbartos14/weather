@@ -1,9 +1,8 @@
 #Datetime,RecNbr,WS_mph_Avg,PAR_Den_Avg,WS_mph_S_WVT,WindDir_SD1_WVT,AirTF_Avg,Rain_in_Tot,RH,WindDir_D1_WVT
 
-import matplotlib.pyplot as plt
 import urllib.request
 import time
-from plotim import *
+from moduleplotim import *
 
 print("Weather info extracted from:")
 url = "http://www.weather.unh.edu/data/" + time.strftime("%Y") + "/" + str(int(time.strftime("%j"))) + ".txt"
@@ -47,15 +46,10 @@ time = 0
 for line in newlines:
     xpoints.append(time)
     time = time + (1/60)
-    ypoints.append(line[-4])
+    ypoints.append(line[-6])
 
-
-plt.plot(xpoints, ypoints)
-plt.ylabel("Temperature (F)")
-plt.xlabel("Time (hours)")
-plt.axis([0,24,None,None])
-plt.show()
-
-plot1 = linearplot()
+plot1 = linearplot(ytitle = "Temperature F\u00B0", xtitle = "Time (hours)", title = "Temperature in Durham NH Today", line_color = "#23ff88", windowx = 1200, windowy = 800)
 plot1.set_data(xpoints,ypoints)
 plot1.plot_data()
+
+
