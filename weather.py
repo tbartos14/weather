@@ -2,7 +2,7 @@
 
 import urllib.request
 import time
-from moduleplotim import *
+from plotim import *
 
 print("Weather info extracted from:")
 url = "http://www.weather.unh.edu/data/" + time.strftime("%Y") + "/" + str(int(time.strftime("%j"))) + ".txt"
@@ -46,9 +46,15 @@ time = 0
 for line in newlines:
     xpoints.append(time)
     time = time + (1/60)
-    ypoints.append(line[-6])
+    ypoints.append(line[-4])
 
-plot1 = linearplot(ytitle = "Temperature F\u00B0", xtitle = "Time (hours)", title = "Temperature in Durham NH Today", line_color = "#23ff88", windowx = 1200, windowy = 800)
+plot1 = linear_plot(line_of_best_fit = True,\
+                   ytitle = "Temperature F\u00B0",\
+                   xtitle = "Time (hours)",\
+                   title = "Temperature in Durham NH Today",\
+                   line_color = "#2222ff",\
+                   windowx = 1200,\
+                   windowy = 800,)
 plot1.set_data(xpoints,ypoints)
 plot1.plot_data()
 
