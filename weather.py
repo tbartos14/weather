@@ -57,5 +57,5 @@ plot1 = linear_plot(line_of_best_fit = True,\
                    windowy = 800,)
 plot1.set_data(xpoints,ypoints)
 plot1.plot_data()
-
+a,b = plot1.residuals()
 
